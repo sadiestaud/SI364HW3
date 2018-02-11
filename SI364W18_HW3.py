@@ -15,6 +15,7 @@ from flask_sqlalchemy import SQLAlchemy
 # Application configurations
 ############################
 app = Flask(__name__)
+app.debug = True
 app.config['SECRET_KEY'] = 'hard to guess string from si364'
 ## TODO 364: Create a database in postgresql in the code line below, and fill in your app's database URI. It should be of the format: postgresql://localhost/YOUR_DATABASE_NAME
 
@@ -45,12 +46,13 @@ db = SQLAlchemy(app) # For database use
 
 ## The following relationships should exist between them:
 # Tweet:User - Many:One
+class Tweet(db.Model): # - Tweet
+    id = db.Column(db.Integer, primary_key=True) ## -- id (Integer, Primary Key)
+    text = db.Column(db.String(280)) ## -- text (String, up to 280 chars)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) ## -- user_id (Integer, ID of user posted -- ForeignKey)
 
-# - Tweet
-## -- id (Integer, Primary Key)
-## -- text (String, up to 280 chars)
-## -- user_id (Integer, ID of user posted -- ForeignKey)
-
+    def __repr__(self):
+        return "({%r} (ID:%r)" % (self.text, self.id)
 ## Should have a __repr__ method that returns strings of a format like:
 #### {Tweet text...} (ID: {tweet id})
 
