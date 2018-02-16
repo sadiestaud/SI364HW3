@@ -109,28 +109,6 @@ def internal_server_error(e):
 ## Main route
 #############
 
-## TODO 364: Fill in the index route as described.
-
-# A template index.html has been created and provided to render what this
-# route needs to show -- YOU just need to fill in this view function so it will work.
-# Some code already exists at the end of this view function -- but there's a
-# bunch to be filled in.
-## HINT: Check out the index.html template to make sure you're sending it the data it needs.
-## We have provided comment scaffolding. Translate those comments into code
-# properly and you'll be all set!
-
-# NOTE: The index route should:
-# - Show the Tweet form.
-
-# - If you enter a tweet with identical text and username to an existing tweet,
-# it should redirect you to the list of all the tweets and a message that you've
-# already saved a tweet like that.
-
-# - If the Tweet form is entered and validates properly, the data from the form
-# should be saved properly to the database, and the user should see the form
-# again with a message flashed: "Tweet successfully saved!"
-# Try it out in the sample app to check against yours!
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
     form = TweetForm(request.form) # Initialize the form
@@ -202,25 +180,6 @@ def get_longest_tweet(): #with a view function get_longest_tweet (see details be
     return render_template('longest_tweet.html', text = text, user = user)
 
 
-
-# NOTE:
-# This view function should compute and render a template (as shown in the
-# sample application) that shows the text of the tweet currently saved in the
-# database which has the most NON-WHITESPACE characters in it, and the username
-# AND display name of the user that it belongs to.
-
-# NOTE: This is different (or could be different) from the tweet with the most
-# characters including whitespace!
-
-# Any ties should be broken alphabetically (alphabetically by text of the
-# tweet). HINT: Check out the chapter in the Python reference textbook on
-# stable sorting.
-# Check out /longest_tweet in the sample application for an example.
-
-# HINT 2: The chapters in the Python reference textbook on:
-## - Dictionary accumulation, the max value pattern
-## - Sorting
-# may be useful for this problem!
 
 
 if __name__ == '__main__':
