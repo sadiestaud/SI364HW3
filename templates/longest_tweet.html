@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div>
+    <li>{{ text }}<br><i>posted by</i> <strong>@{{ user }}</strong></li><br><br>
+</div>
+
+{% if not all_tweets %}
+    There are no saved tweets to show.
+{% endif %}
+
+
+<div>
+{% for message in get_flashed_messages() %}
+    <strong>*** {{ message }} ***</strong>
+{% endfor %}
+</div>
+
+{% endblock %}
